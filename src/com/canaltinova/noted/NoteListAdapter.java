@@ -2,8 +2,7 @@ package com.canaltinova.noted;
 
 import java.util.List;
 
-import com.canaltinova.noted.R;
-
+import android.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -16,9 +15,10 @@ import android.widget.TextView;
 
 public class NoteListAdapter extends BaseAdapter{
 
-	private LayoutInflater inflater;
+	private LayoutInflater inflater;//We use it in different methods
 	private List<Note> noteList;
 	
+	//initialize NoteListAdapter 
 	public NoteListAdapter(Activity activity,List<Note> notes){
 		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		noteList = notes;
@@ -51,7 +51,7 @@ public class NoteListAdapter extends BaseAdapter{
 			  vi = inflater.inflate(R.layout.raw_layout, null); // create layout from raw_layout
 		
 		
-		Note note = noteList.get(position);//getting note with position
+		Note note = noteList.get(position);//gets note with position
 				
 		TextView tvTitle = (TextView) vi.findViewById(R.id.rowTitle); // row title
 
@@ -62,12 +62,11 @@ public class NoteListAdapter extends BaseAdapter{
 		tvDate.setText(note.getDate());
 
 		
-		LinearLayout coloredLayout = (LinearLayout) vi.findViewById(R.id.layoutColor);
+		LinearLayout coloredLayout = (LinearLayout) vi.findViewById(R.id.layoutColor);//sets the line bottom the row
 		coloredLayout.setBackgroundResource(note.getColorsCode());
 		
 		 
 		
-		//TODO: oluþturacaðým bir listview item ý için layout a yukarýdaki örnek gibi database den veriler çekicem.
 	      return vi;
 	}
 }
