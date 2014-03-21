@@ -2,8 +2,11 @@ package com.canaltinova.noted;
 
 import java.io.Serializable;
 
+import android.R;
+
 public class Note implements Serializable{
 	
+	//This is a simple note class.
 	private static final long serialVersionUID = 1L;
 	  private int id;
 	  private String title;
@@ -15,13 +18,16 @@ public class Note implements Serializable{
 		  super();
 	  }
 
-	  public Note(String title, String content, String date,int color){//TODO: add color
+	  //note initialize method.
+	  public Note(String title, String content, String date,int color){
 		  super();
 		  this.title = title;
 		  this.content = content;
 		  this.date = date;
 		  this.color = color;
 	  }
+	  
+	  //sets and gets note's id, title, contenti date and color
 	  
 	  public String getTitle(){
 		  return title;
@@ -40,17 +46,6 @@ public class Note implements Serializable{
 	  }
 	  
 	  public String getDate(){
-		  /*StringBuilder newDate = new StringBuilder();
-		  int dotFirst = date.indexOf(".");
-		  int dotSecond = date.indexOf(".", dotFirst+1);
-		  
-		  newDate.append(date.substring(0,dotFirst));
-		  newDate.append("\n");
-		  newDate.append(getMonth(Integer.parseInt(date.substring(dotFirst+1,dotSecond))));//TODO: burada ay alma olayý tam olarak çalýþmýyor bakmak lazým
-		  newDate.append("\n");
-		  newDate.append(date.substring(dotSecond+1));
-		  
-		  //return newDate.toString();*/
 		  return date;
 	  }
 	  public void setDate(String date){
@@ -69,6 +64,7 @@ public class Note implements Serializable{
 				 
 	  }
 	  
+	  //sometime we need the code real code of color. This is for it.
 	  public int getColorsCode(){
 		  switch (color) {
 		case 0:
@@ -88,36 +84,5 @@ public class Note implements Serializable{
 	  public int getColor(){
 		  return color;
 	  }
-
-	  public int getMonth(int month){
-		  /*switch (month) {
-		case 01:
-			return R.string.january;
-		case 02:
-			return R.string.february;
-		case 03:
-			return R.string.march;
-		case 04:
-			return R.string.april;
-		case 05:
-			return R.string.may;
-		case 06:
-			return R.string.june;
-		case 07:
-			return R.string.july;
-		case 8:
-			return R.string.august;
-		case 9:
-			return R.string.september;
-		case 10:
-			return R.string.october;
-		case 11:
-			return R.string.november;
-		case 12:
-			return R.string.december;
-		default:
-			return 0;*/
-		  return 0;
-		}
 
 }

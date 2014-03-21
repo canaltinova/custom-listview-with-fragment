@@ -22,7 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-
+		//creates a database for notes
 		String sql = "CREATE TABLE " + TABLE_NOTES + "(id INTEGER PRIMARY KEY AUTOINCREMENT ,title TEXT, content TEXT, date TEXT,color INTEGER" + ")";
 		db.execSQL(sql);
 		
@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		
+		//simple upgrade method. Just drops table if note table exists
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NOTES);
 	      onCreate(db);
 	}
@@ -55,7 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
 		 List<Note> notes = new ArrayList<Note>();
 		 SQLiteDatabase db = this.getWritableDatabase();
 		 
-		 String sqlQuery = "SELECT  * FROM " + TABLE_NOTES;
+		 String sqlQuery = "SELECT  * FROM " + TABLE_NOTES;//gets every notes
 	     Cursor cursor = db.rawQuery(sqlQuery, null);
 		 
 		 //Cursor cursor = db.query(TABLE_NOTES, new String[] {"id","title","content","date","color"}, null, null, null, null, null);
@@ -102,24 +102,5 @@ public class DBHelper extends SQLiteOpenHelper {
 			db.close();
 			return null;
 		}
-	}
-	public void updateNote(Note note){
-		
-		SQLiteDatabase db = this.getWritableDatabase();
-		String strSQL = "UPDATE " + TABLE_NOTES + " SET color = " + note.getColor() + ", title = '" +note.getTitle() +"', content = '" + note.getContent() + "', date = '"+ note.getDate() + "' WHERE id = "+ note.getId();
-		db.execSQL(strSQL);
-		
-		db.close();
-		
-	}
-	
-	public void updateContent(int id, String title, String content, String date){
-		
-		SQLiteDatabase db = this.getWritableDatabase();
-		
-		String strSQL = "UPDATE " + TABLE_NOTES + "SET title = '" + title + "' content = '" + content + "' date = '" + date + "' WHERE id =" + id;
-		db.execSQL(strSQL);
-		
-		db.close();
 	}
 }
